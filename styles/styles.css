@@ -1,0 +1,154 @@
+@import url("https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100;200;300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.truncate1 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.truncate2 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.truncate3 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* swiper  */
+
+.custom-pagination .swiper-pagination-bullet {
+  width: 20px;
+  border-radius: 0px;
+  height: 3px;
+  background-color: #4a3d3d30;
+  opacity: 1;
+  border-width: 1px;
+  border-color: gray;
+}
+
+.custom-pagination .swiper-pagination-bullet-active {
+  border-color: black;
+  width: 25px;
+}
+
+.sub-dropdown {
+  opacity: 0;
+  visibility: hidden;
+  transform-origin: top;
+  transform: scaleY(0);
+  transition: all 0.5s;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(6px);
+  padding: 10px;
+}
+
+.dropdown {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.35s ease-in;
+}
+
+.pullup {
+  opacity: 100;
+  visibility: visible;
+  transform: translateY(-10px);
+  transition: all 0.35s ease-in;
+}
+
+
+.goog-te-gadget {
+  overflow: hidden;
+  color: white;
+  height: 26px;
+}
+
+.goog-te-combo {
+  background-color: white;
+  width: 100%;
+  font-size: 16px !important;
+  font-weight: 400;
+  color: black;
+
+}
+
+body {
+  top: 0px !important;
+}
+
+body>.skiptranslate {
+  display: none;
+}
+
+
+
+.goog-te-combo {}
+
+
+
+.call-animation {
+  padding: 10px;
+  background-color: rgb(221, 51, 51);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+
+
+
+.call-animation::before {
+  content: "";
+  position: absolute;
+  border: 1px solid #ed1b2e;
+  width: calc(100% + 40px);
+  height: calc(100% + 40px);
+  border-radius: 50%;
+  animation: pulse 1s linear infinite;
+}
+
+.call-animation::after {
+  content: "";
+  position: absolute;
+  border: 1px solid #ed1b2e;
+  width: calc(100% + 40px);
+  height: calc(100% + 40px);
+  border-radius: 50%;
+  animation: pulse 1s linear infinite;
+  animation-delay: 0.3s;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1.3);
+    opacity: 0;
+  }
+}
