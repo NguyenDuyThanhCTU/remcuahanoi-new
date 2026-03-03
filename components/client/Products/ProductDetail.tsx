@@ -71,7 +71,12 @@ const ProductDetail = ({
 
           <div className="font-normal text-[25px] text-red-500">
             {Data?.price ? (
-              <> Giá: {Data?.price}₫</>
+              <div>
+                <div className="line-through text-[16px] text-black">
+                  {Data.price} ₫
+                </div>
+                <div>Giá: {Data?.newPrice}₫</div>
+              </div>
             ) : (
               <Link
                 className="hover:underline hover:text-blue-500 duration-300 "
