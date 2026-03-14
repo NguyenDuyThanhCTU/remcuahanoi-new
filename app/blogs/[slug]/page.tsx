@@ -25,7 +25,7 @@ export async function generateMetadata({
     searchCategory,
     searchFilterParams,
     Category,
-    params.slug
+    params.slug,
   );
 
   return {
@@ -63,19 +63,18 @@ const BlogPage = async ({ params, searchParams }: BlogPageProps) => {
       Datashow = LV1Data;
       if (searchFilterParams) {
         const LV2Data = LV1Data?.filter((item) =>
-          item.level2?.includes(searchFilterParams)
+          item.level2?.includes(searchFilterParams),
         );
 
         Datashow = LV2Data;
       }
     }
   }
-  const SimilarData = Posts?.filter((item: any) => item.level0 == params.slug);
   const PostTitle = await PostMetadata(
     searchCategory,
     searchFilterParams,
     Category,
-    params.slug
+    params.slug,
   );
   return (
     <>

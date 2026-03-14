@@ -10,6 +10,7 @@ import Footer from "@components/layout/Footer";
 import Hotline from "@components/layout/Hotline";
 import BookingPage from "@components/layout/Booking";
 import Hotline1 from "@components/layout/Hotline1";
+import Script from "next/script";
 
 const UVNM = localFont({
   src: "../public/UTM Avo.ttf",
@@ -31,6 +32,18 @@ export default async function RootLayout({
 
   return (
     <html lang="en" className={UVNM?.className}>
+      <head>
+        {/* Thêm Google Tag Manager Script */}
+        <Script id="google-tag-manager" strategy="afterInteractive">
+          {`
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-MJQHXN5K');
+          `}
+        </Script>
+      </head>
       <StateProvider>
         <body className="font-LexendDeca font-light ">
           <Header
@@ -38,7 +51,11 @@ export default async function RootLayout({
             ProductCategory={ProductCategory}
             PostsCategory={PostCategory}
           />
-
+          <noscript
+            dangerouslySetInnerHTML={{
+              __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MJQHXN5K" height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
+            }}
+          />
           <main className="d:mt-[132px] p:mt-[0px] d:w-[1200px] p:w-auto d:mx-auto p:mx-2 ">
             {children}
           </main>
