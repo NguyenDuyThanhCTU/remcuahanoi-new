@@ -33,6 +33,12 @@ export default async function RootLayout({
   return (
     <html lang="en" className={UVNM?.className}>
       <head>
+        {/* Xác thực Google Search Console & Google Merchant Center */}
+        <meta
+          name="google-site-verification"
+          content="8rvFCBhapBI4UkfChsJNB78pHZpn36Rb9cBV9hv4Bmo"
+        />
+
         {/* Thêm Google Tag Manager Script */}
         <Script id="google-tag-manager" strategy="afterInteractive">
           {`
