@@ -4,6 +4,7 @@ import { ProductProps } from "@assets/props";
 import { useStateProvider } from "@context/StateProvider";
 import { notification } from "antd";
 import React from "react";
+import PaymentMethodSelector from "./FormOrder/PaymentMethodSelector";
 
 interface FormConfirmProps {
   setStep: (step: any) => void;
@@ -26,7 +27,7 @@ const FormConfirm = ({ setStep, Data, ProductData }: FormConfirmProps) => {
   let FinalCount = 0;
   Object.keys(cartMap).forEach((itemId) => {
     const product: any = ProductData.find(
-      (product: any) => product.id === itemId
+      (product: any) => product.id === itemId,
     );
 
     if (product) {
@@ -90,7 +91,7 @@ const FormConfirm = ({ setStep, Data, ProductData }: FormConfirmProps) => {
           Accept: "application/json",
         },
         body: JSON.stringify(data),
-      }
+      },
     );
 
     if (response.ok) {
@@ -158,10 +159,7 @@ const FormConfirm = ({ setStep, Data, ProductData }: FormConfirmProps) => {
           </div>
         </div>
       </div>
-      <div className="flex flex-col">
-        <h2 className="text-[25px] font-normal">Phương thức thanh toán</h2>
-        <p>Thanh toán tiền mặt</p>
-      </div>
+      <PaymentMethodSelector />
       <div className="grid grid-cols-2">
         <div className="font-normal text-[18px] flex justify-between w-full">
           <div>Tổng tiền hàng</div>

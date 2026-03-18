@@ -2,6 +2,7 @@ import { ProductProps, SEOProps } from "@assets/props";
 import HomeDisplay from "@components/client/Home/HomeDisplay";
 import HomeNew from "@components/client/Home/HomeNew";
 import HomeNewest from "@components/client/Home/HomeNewest";
+import HomePolicy from "@components/client/Home/HomePolicy";
 import HomeProducts from "@components/client/Home/HomeProducts";
 import HomeProject from "@components/client/Home/HomeProject";
 import HomeSlide from "@components/client/Home/HomeSlide";
@@ -36,13 +37,14 @@ const HomePage = async ({
   let DataShow: any;
   if (searchValue) {
     DataShow = Products?.filter((posts: ProductProps) =>
-      posts?.title?.toLowerCase().includes(searchValue.toLowerCase())
+      posts?.title?.toLowerCase().includes(searchValue.toLowerCase()),
     );
   }
-  const ProjectData = Posts?.filter((item) => item.level0 === "ve-dac-an-love");
   const newsData = Posts?.filter((item) => item.level0 === "tin-tuc");
   const isBestselling = Products?.filter((item) => item.bestselling);
   const isSale = Products?.filter((item) => item.newPrice !== undefined);
+  const policyData = Posts?.filter((item) => item.level0 === "policy");
+
   return (
     <div className="">
       {searchValue ? (
@@ -70,7 +72,7 @@ const HomePage = async ({
           />
           <HomeProducts Category={ProductCategory} Data={Products} />
           {/* <HomeTrend Products={Products} ProductCategory={ProductCategory} /> */}
-
+          <HomePolicy Data={policyData} />
           <HomeNew Data={newsData} />
         </>
       )}

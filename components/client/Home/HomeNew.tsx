@@ -18,16 +18,17 @@ export const NewCard = ({ Data }: { Data: PostProps }) => {
             alt="new"
             width={300}
             height={300}
-            className="object-cover w-full h-full"
+            className="object-contain w-full h-full"
           />
         </div>
         <div className="py-2">
           <div
-            className="text-center my-2 truncate2
+            className="text-center my-2 truncate2 font-bold
         "
           >
             {Data?.title}
           </div>
+          <p className="truncate2">{Data?.description}</p>
         </div>
       </Link>
     </div>
