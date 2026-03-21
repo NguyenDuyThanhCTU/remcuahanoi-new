@@ -1,4 +1,4 @@
-"use client";
+
 import {
   BranchProps,
   ContactProps,
@@ -8,7 +8,7 @@ import {
 import { LocalFindById } from "@components/Items/Handle";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React from "react";
 import { CiMail } from "react-icons/ci";
 import {
   FaFacebookSquare,

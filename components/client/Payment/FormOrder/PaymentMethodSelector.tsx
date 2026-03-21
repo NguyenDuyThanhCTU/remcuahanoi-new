@@ -74,14 +74,6 @@ const PaymentMethodSelector = () => {
           </label>
         ))}
       </div>
-
-      {/* Nút xác nhận */}
-      <button
-        onClick={handleConfirm}
-        className="mt-2 w-full py-3 px-4 bg-blue-600 text-white font-medium rounded-xl hover:bg-blue-700 transition-colors focus:ring-4 focus:ring-blue-200"
-      >
-        Tiếp tục
-      </button>
     </div>
   );
 };

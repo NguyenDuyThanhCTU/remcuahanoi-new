@@ -50,28 +50,27 @@ export default async function RootLayout({
           `}
         </Script>
       </head>
-      <StateProvider>
-        <body className="font-LexendDeca font-light ">
-          <Header
-            Config={Config}
-            ProductCategory={ProductCategory}
-            PostsCategory={PostCategory}
-          />
-          <noscript
-            dangerouslySetInnerHTML={{
-              __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MJQHXN5K" height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
-            }}
-          />
-          <main className="d:mt-[132px] p:mt-[0px] d:w-[1200px] p:w-auto d:mx-auto p:mx-2 ">
-            {children}
-          </main>
-          <BookingPage ConfigData={Config} />
-          <Footer Config={Config} Branches={Branches} />
-          <Hotline Config={Config} />
-          <Hotline1 Config={Config} />
-          <Copyright Config={Config} />
-        </body>
-      </StateProvider>
+
+      <body className="font-LexendDeca font-light ">
+        <Header
+          Config={Config}
+          ProductCategory={ProductCategory}
+          PostsCategory={PostCategory}
+        />
+        <noscript
+          dangerouslySetInnerHTML={{
+            __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MJQHXN5K" height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
+          }}
+        />
+        <main className="d:mt-[132px] p:mt-[0px] d:w-[1200px] p:w-auto d:mx-auto p:mx-2 ">
+          {children}
+        </main>
+        <BookingPage ConfigData={Config} />
+        <Footer Config={Config} Branches={Branches} />
+        <Hotline Config={Config} />
+        <Hotline1 Config={Config} />
+        <Copyright Config={Config} />
+      </body>
     </html>
   );
 }

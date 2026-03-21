@@ -1,8 +1,8 @@
-"use client";
+
 import { CategoryProps, ContactProps, SocialMediaProps } from "@assets/props";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   FaFacebookMessenger,
   FaFacebookSquare,
@@ -11,7 +11,7 @@ import {
   FaSearch,
 } from "react-icons/fa";
 import { IoCart, IoLanguage } from "react-icons/io5";
-import { useStateProvider } from "@context/StateProvider";
+
 import { IoIosArrowDown, IoMdCart } from "react-icons/io";
 
 import { Badge, Modal } from "antd";
@@ -34,15 +34,13 @@ interface HeaderProps {
 }
 
 const Header = ({ Config, ProductCategory, PostsCategory }: HeaderProps) => {
-  const [search, setSearch] = useState("");
-  const [isLanguage, setLanguage] = useState(false);
   const ContactData: ContactProps = Config?.find(
     (items: any) => items.id === "contact"
   );
   const SocialMedia: SocialMediaProps = Config?.find(
     (item: any) => item.id === "SocialMedia"
   );
-  const { CartItems } = useStateProvider();
+
 
   const HeaderItems = [
     {
@@ -304,7 +302,6 @@ const Header = ({ Config, ProductCategory, PostsCategory }: HeaderProps) => {
         <Mobile
           ContactData={ContactData}
           Header={HeaderItems}
-          setIsLanguage={setLanguage}
           Config={Config}
         />
       </div>

@@ -1,12 +1,19 @@
 import { ProductProps, SEOProps } from "@assets/props";
-import HomeDisplay from "@components/client/Home/HomeDisplay";
-import HomeNew from "@components/client/Home/HomeNew";
 import HomeNewest from "@components/client/Home/HomeNewest";
-import HomePolicy from "@components/client/Home/HomePolicy";
-import HomeProducts from "@components/client/Home/HomeProducts";
-import HomeProject from "@components/client/Home/HomeProject";
 import HomeSlide from "@components/client/Home/HomeSlide";
-import HomeTrend from "@components/client/Home/HomeTrend";
+import dynamic from "next/dynamic";
+
+const HomeDisplay = dynamic(
+  () => import("@components/client/Home/HomeDisplay"),
+);
+const HomeNew = dynamic(() => import("@components/client/Home/HomeNew"));
+const HomePolicy = dynamic(() => import("@components/client/Home/HomePolicy"), {
+  ssr: false,
+});
+const HomeProducts = dynamic(
+  () => import("@components/client/Home/HomeProducts"),
+);
+const HomeTrend = dynamic(() => import("@components/client/Home/HomeTrend"));
 import ProductCard from "@components/client/Products/ProductCard";
 import { LocalFindById } from "@components/Items/Handle";
 import { find } from "@config/lib/api";
@@ -64,16 +71,20 @@ const HomePage = async ({
         </div>
       ) : (
         <>
-          <HomeSlide Data={Slides} Products={Products} />
-          <HomeDisplay Data={isSale} />
-          <HomeNewest
-            Products={isBestselling}
-            ProductCategory={ProductCategory}
-          />
-          <HomeProducts Category={ProductCategory} Data={Products} />
-          {/* <HomeTrend Products={Products} ProductCategory={ProductCategory} /> */}
-          <HomePolicy Data={policyData} />
-          <HomeNew Data={newsData} />
+          {Products && (
+            <>
+              <HomeSlide Data={Slides} Products={Products} />
+
+              <HomeDisplay Data={isSale} />
+              <HomeNewest
+                Products={isBestselling}
+                ProductCategory={ProductCategory}
+              />
+              <HomeProducts Category={ProductCategory} Data={Products} />
+              <HomePolicy Data={policyData} />
+              <HomeNew Data={newsData} />
+            </>
+          )}
         </>
       )}
     </div>

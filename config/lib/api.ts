@@ -18,6 +18,7 @@ import {
 import { db } from "@config/firebase/Firebase";
 import { convertDate, convertDocumentData, convertFieldValue } from "./Handle";
 import { notification } from "antd";
+import { cache } from "react";
 
 export const insertOne = async (Collection: string, data: any) => {
   data.createdAt = serverTimestamp();
@@ -158,7 +159,7 @@ export async function find(CollectionName: string) {
   return documents;
 }
 
-export const findLimi1 = async (Collection: string) => {
+export const findLimi1 = cache(async (Collection: string) => {
   try {
     const q = query(
       collection(db, Collection),
@@ -182,9 +183,9 @@ export const findLimi1 = async (Collection: string) => {
   } catch (error) {
     console.error("Error get document: ", error);
   }
-};
+});
 
-export const findLimit = async (Collection: string, PageNumber: number) => {
+export const findLimit = cache(async (Collection: string, PageNumber: number) => {
   try {
     const q = query(
       collection(db, Collection),
@@ -209,9 +210,9 @@ export const findLimit = async (Collection: string, PageNumber: number) => {
   } catch (error) {
     console.log("ERROR: ", error);
   }
-};
+});
 
-export const findOne = async (
+export const findOne = cache(async (
   Collection: string,
   field: string,
   value: any
@@ -229,7 +230,7 @@ export const findOne = async (
   } catch (error) {
     console.error("Error get document: ", error);
   }
-};
+});
 
 export const updateOne = async (
   collectionName: string,
