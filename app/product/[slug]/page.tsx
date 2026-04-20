@@ -12,7 +12,6 @@ type ProductDetailProps = {
 
 export async function generateStaticParams() {
   const Products = await find("Products");
-
   return Products.map((product: ProductProps) => ({
     slug: product.url,
   }));
