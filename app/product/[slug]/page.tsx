@@ -10,6 +10,14 @@ type ProductDetailProps = {
   searchParams: { [key: string]: string | string[] | any };
 };
 
+export async function generateStaticParams() {
+  const Products = await find("Products");
+
+  return Products.map((product: ProductProps) => ({
+    slug: product.url,
+  }));
+}
+
 export async function generateMetadata({
   searchParams,
 }: ProductDetailProps): Promise<Metadata> {
@@ -27,10 +35,12 @@ export async function generateMetadata({
 
 const ProductDetailPage = async ({ searchParams }: ProductDetailProps) => {
   const searchValue = searchParams.poid;
-  const Data: ProductProps = await findById("Products", searchValue);
-  const Products = await find("Products");
-  const Config = await find("Config");
-  const ProductCategory = await find("ProductCategory");
+  const [Data, Products, Config, ProductCategory] = await Promise.all([
+    findById("Products", searchValue), // Dữ liệu sản phẩm hiện tại
+    find("Products"), // Danh sách sản phẩm (có thể dùng cho mục "Sản phẩm liên quan")
+    find("Config"), // Cấu hình web
+    find("ProductCategory"), // Danh mục
+  ]);
 
   return (
     <div className="d:w-[1300px] d:mx-auto p:w-auto p:mx-2 py-5">

@@ -59,21 +59,16 @@ function Hotline({ Config }: { Config: Array<any> }) {
 
   const HotlineItems = [
     {
-      icon: "https://firebasestorage.googleapis.com/v0/b/klatexpress.appspot.com/o/facebook__6__53aaa8d352524d3eb025af5203eaa437_icon.webp?alt=media&token=2b491511-e084-4c3a-9100-b56e765415eb",
+      icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Facebook_f_logo_%282019%29.svg/120px-Facebook_f_logo_%282019%29.svg.png",
       label: "Facebook",
       link: SocialMedia?.facebook
         ? SocialMedia?.facebook
         : "https://facebook.com",
     },
     {
-      icon: "https://firebasestorage.googleapis.com/v0/b/klatexpress.appspot.com/o/shop_social_sidebar_item_image_3_icon.webp?alt=media&token=76d3867c-06cc-4f5d-a350-91b834e86ab3",
+      icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Tiktok_icon.svg/120px-Tiktok_icon.svg.png?_=20240827133148",
       label: "Tiktok",
       link: SocialMedia?.tiktok ? SocialMedia?.tiktok : "https://tiktok.com",
-    },
-    {
-      icon: "https://firebasestorage.googleapis.com/v0/b/klatexpress.appspot.com/o/shop_social_sidebar_item_image_5_icon.webp?alt=media&token=f332afa0-a0dd-49aa-9cf9-8154cc4fdfd3",
-      label: "Youtube",
-      link: SocialMedia?.youtube ? SocialMedia?.youtube : "https://Youtube.com",
     },
   ];
 
@@ -86,7 +81,7 @@ function Hotline({ Config }: { Config: Array<any> }) {
               <div className=" relative -right-[157px] border border-gray-300 w-[200px] bg-white cursor-pointer hover:-translate-x-[157px] duration-300">
                 <div className="p-2  items-center grid grid-cols-3">
                   <div className="w-[25px] h-[25px]">
-                    <Image
+                    <img
                       src={item.icon}
                       alt="zalo"
                       width={50}
@@ -109,8 +104,8 @@ function Hotline({ Config }: { Config: Array<any> }) {
             <div className=" relative -right-[157px] border border-gray-300 w-[200px] bg-white cursor-pointer hover:-translate-x-[157px] duration-300">
               <div className="p-2  items-center grid grid-cols-3">
                 <div className="w-[25px] h-[25px]">
-                  <Image
-                    src="https://firebasestorage.googleapis.com/v0/b/klatexpress.appspot.com/o/arrow-up_eb1426bb7fc647eab89f9279695752cd.webp?alt=media&token=9817972d-4e09-46a0-8476-9f1eb945b9df"
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Firefox_Home_-_logo.png/120px-Firefox_Home_-_logo.png"
                     alt="zalo"
                     width={50}
                     height={50}
@@ -130,7 +125,7 @@ function Hotline({ Config }: { Config: Array<any> }) {
               <div className=" relative border border-gray-300  bg-white cursor-pointer ">
                 <div className="p-2 ">
                   <div className="w-[25px] h-[25px]">
-                    <Image
+                    <img
                       src={item.icon}
                       alt="zalo"
                       width={50}
@@ -152,8 +147,8 @@ function Hotline({ Config }: { Config: Array<any> }) {
             <div className=" relative border border-gray-300  bg-white cursor-pointer ">
               <div className="p-2">
                 <div className="w-[25px] h-[25px]">
-                  <Image
-                    src="https://firebasestorage.googleapis.com/v0/b/klatexpress.appspot.com/o/arrow-up_eb1426bb7fc647eab89f9279695752cd.webp?alt=media&token=9817972d-4e09-46a0-8476-9f1eb945b9df"
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Firefox_Home_-_logo.png/120px-Firefox_Home_-_logo.png"
                     alt="zalo"
                     width={50}
                     height={50}

@@ -1,8 +1,7 @@
-"use client";
 import { CategoryProps, ContactProps, SocialMediaProps } from "@assets/props";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   FaFacebookMessenger,
   FaFacebookSquare,
@@ -11,7 +10,7 @@ import {
   FaSearch,
 } from "react-icons/fa";
 import { IoCart, IoLanguage } from "react-icons/io5";
-import { useStateProvider } from "@context/StateProvider";
+
 import { IoIosArrowDown, IoMdCart } from "react-icons/io";
 
 import { Badge, Modal } from "antd";
@@ -34,15 +33,12 @@ interface HeaderProps {
 }
 
 const Header = ({ Config, ProductCategory, PostsCategory }: HeaderProps) => {
-  const [search, setSearch] = useState("");
-  const [isLanguage, setLanguage] = useState(false);
   const ContactData: ContactProps = Config?.find(
-    (items: any) => items.id === "contact"
+    (items: any) => items.id === "contact",
   );
   const SocialMedia: SocialMediaProps = Config?.find(
-    (item: any) => item.id === "SocialMedia"
+    (item: any) => item.id === "SocialMedia",
   );
-  const { CartItems } = useStateProvider();
 
   const HeaderItems = [
     {
@@ -51,15 +47,7 @@ const Header = ({ Config, ProductCategory, PostsCategory }: HeaderProps) => {
       image: "",
       children: [""],
     },
-    // {
-    //   label: "Rèm cửa",
-    //   value: "san-pham/rem-cua",
 
-    //   children: ProductCategory?.filter(
-    //     (item) =>
-    //       slugify(item.level0, { locale: "vi", lower: true }) === "rem-cua"
-    //   ),
-    // },
     {
       label: "RÈM VẢI",
       value: "san-pham/rem-vai",
@@ -67,7 +55,7 @@ const Header = ({ Config, ProductCategory, PostsCategory }: HeaderProps) => {
         "https://firebasestorage.googleapis.com/v0/b/cokhiphuongtung-960eb.appspot.com/o/rem-vai.jpg?alt=media&token=5b8ff0fd-35b5-450b-b510-7d8bf119e19b",
       children: ProductCategory?.filter(
         (item) =>
-          slugify(item.level0, { locale: "vi", lower: true }) === "rem-vai"
+          slugify(item.level0, { locale: "vi", lower: true }) === "rem-vai",
       ),
     },
     {
@@ -77,7 +65,8 @@ const Header = ({ Config, ProductCategory, PostsCategory }: HeaderProps) => {
         "https://firebasestorage.googleapis.com/v0/b/cokhiphuongtung-960eb.appspot.com/o/rem-cau-vong.jpg?alt=media&token=95b9c77c-b3aa-409a-a7ec-79dee78b99ee",
       children: ProductCategory?.filter(
         (item) =>
-          slugify(item.level0, { locale: "vi", lower: true }) === "rem-cau-vong"
+          slugify(item.level0, { locale: "vi", lower: true }) ===
+          "rem-cau-vong",
       ),
     },
     {
@@ -87,7 +76,7 @@ const Header = ({ Config, ProductCategory, PostsCategory }: HeaderProps) => {
         "https://firebasestorage.googleapis.com/v0/b/cokhiphuongtung-960eb.appspot.com/o/rem-cuon.jpg?alt=media&token=f6e59cea-67cd-4a2a-9c18-168de1ac03e3",
       children: ProductCategory?.filter(
         (item) =>
-          slugify(item.level0, { locale: "vi", lower: true }) === "rem-cuon"
+          slugify(item.level0, { locale: "vi", lower: true }) === "rem-cuon",
       ),
     },
     {
@@ -97,7 +86,7 @@ const Header = ({ Config, ProductCategory, PostsCategory }: HeaderProps) => {
         "https://firebasestorage.googleapis.com/v0/b/cokhiphuongtung-960eb.appspot.com/o/rem-la-doc.jpg?alt=media&token=c2c7200b-919d-4d37-9b71-36a86f21e3f8",
       children: ProductCategory?.filter(
         (item) =>
-          slugify(item.level0, { locale: "vi", lower: true }) === "rem-la-doc"
+          slugify(item.level0, { locale: "vi", lower: true }) === "rem-la-doc",
       ),
     },
     {
@@ -107,7 +96,7 @@ const Header = ({ Config, ProductCategory, PostsCategory }: HeaderProps) => {
         "https://firebasestorage.googleapis.com/v0/b/cokhiphuongtung-960eb.appspot.com/o/rem-go.jpg?alt=media&token=eac08c4e-08ae-43e0-bd11-e366718a3a78",
       children: ProductCategory?.filter(
         (item) =>
-          slugify(item.level0, { locale: "vi", lower: true }) === "rem-go"
+          slugify(item.level0, { locale: "vi", lower: true }) === "rem-go",
       ),
     },
     {
@@ -117,7 +106,7 @@ const Header = ({ Config, ProductCategory, PostsCategory }: HeaderProps) => {
         "https://firebasestorage.googleapis.com/v0/b/cokhiphuongtung-960eb.appspot.com/o/rem-go.jpg?alt=media&token=eac08c4e-08ae-43e0-bd11-e366718a3a78",
       children: ProductCategory?.filter(
         (item) =>
-          slugify(item.level0, { locale: "vi", lower: true }) === "rem-nhom"
+          slugify(item.level0, { locale: "vi", lower: true }) === "rem-nhom",
       ),
     },
     {
@@ -128,7 +117,7 @@ const Header = ({ Config, ProductCategory, PostsCategory }: HeaderProps) => {
       children: ProductCategory?.filter(
         (item) =>
           slugify(item.level0, { locale: "vi", lower: true }) ===
-          "rem-vach-to-ong"
+          "rem-vach-to-ong",
       ),
     },
 
@@ -140,7 +129,7 @@ const Header = ({ Config, ProductCategory, PostsCategory }: HeaderProps) => {
       children: ProductCategory?.filter(
         (item) =>
           slugify(item.level0, { locale: "vi", lower: true }) ===
-          "cua-chong-muoi"
+          "cua-chong-muoi",
       ),
     },
 
@@ -151,7 +140,7 @@ const Header = ({ Config, ProductCategory, PostsCategory }: HeaderProps) => {
         "https://firebasestorage.googleapis.com/v0/b/cokhiphuongtung-960eb.appspot.com/o/bat-cuon.jpg?alt=media&token=3b3ef201-4b73-4f11-af7e-67271f13b2df",
       children: ProductCategory?.filter(
         (item) =>
-          slugify(item.level0, { locale: "vi", lower: true }) === "bat-cuon"
+          slugify(item.level0, { locale: "vi", lower: true }) === "bat-cuon",
       ),
     },
     {
@@ -162,7 +151,7 @@ const Header = ({ Config, ProductCategory, PostsCategory }: HeaderProps) => {
       children: ProductCategory?.filter(
         (item) =>
           slugify(item.level0, { locale: "vi", lower: true }) ===
-          "gian-phoi-thong-minh"
+          "gian-phoi-thong-minh",
       ),
     },
     {
@@ -172,7 +161,7 @@ const Header = ({ Config, ProductCategory, PostsCategory }: HeaderProps) => {
         "https://firebasestorage.googleapis.com/v0/b/cokhiphuongtung-960eb.appspot.com/o/dong-co-rem.jpg?alt=media&token=f9fbd0f5-6163-40c8-8e32-4380b9a81c93",
       children: ProductCategory?.filter(
         (item) =>
-          slugify(item.level0, { locale: "vi", lower: true }) === "dong-co-rem"
+          slugify(item.level0, { locale: "vi", lower: true }) === "dong-co-rem",
       ),
     },
     {
@@ -182,7 +171,7 @@ const Header = ({ Config, ProductCategory, PostsCategory }: HeaderProps) => {
         "https://firebasestorage.googleapis.com/v0/b/cokhiphuongtung-960eb.appspot.com/o/bat-cuon.jpg?alt=media&token=3b3ef201-4b73-4f11-af7e-67271f13b2df",
       children: ProductCategory?.filter(
         (item) =>
-          slugify(item.level0, { locale: "vi", lower: true }) === "decor-khac"
+          slugify(item.level0, { locale: "vi", lower: true }) === "decor-khac",
       ),
     },
     {
@@ -304,23 +293,9 @@ const Header = ({ Config, ProductCategory, PostsCategory }: HeaderProps) => {
         <Mobile
           ContactData={ContactData}
           Header={HeaderItems}
-          setIsLanguage={setLanguage}
           Config={Config}
         />
       </div>
-
-      {/* <Modal
-        footer={null}
-        open={isLanguage}
-        onCancel={() => setLanguage(false)}
-      >
-        <>
-          <h3 className="text-center font-bold text-[22px] ">Chọn ngôn ngữ</h3>
-          <div className="w-full h-[35px] mt-5">
-            <Translate />
-          </div>
-        </>
-      </Modal> */}
     </>
   );
 };

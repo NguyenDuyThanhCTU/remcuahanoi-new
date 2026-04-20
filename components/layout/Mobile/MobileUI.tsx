@@ -26,14 +26,12 @@ interface MobileProps {
   ContactData: ContactProps;
   Header: any;
   Config: any;
-  setIsLanguage: (isOpen: boolean) => void;
 }
 
 const Mobile = ({
   ContactData,
   Header,
   Config,
-  setIsLanguage,
 }: MobileProps) => {
   const [isOpenMenu, setOpenMenu] = useState(false);
   const [search, setSearch] = useState("");

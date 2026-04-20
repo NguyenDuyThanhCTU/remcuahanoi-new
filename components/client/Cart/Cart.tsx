@@ -1,9 +1,9 @@
-'use client';
-import React, { useState } from 'react';
-import { useStateProvider } from '@context/StateProvider';
-import { ProductProps } from '@assets/props';
-import Image from 'next/image';
-import { MdDelete } from 'react-icons/md';
+"use client";
+import React, { useState } from "react";
+import { useStateProvider } from "@context/StateProvider";
+import { ProductProps } from "@assets/props";
+import Image from "next/image";
+import { MdDelete } from "react-icons/md";
 
 interface CartProps {
   Data: ProductProps[];
@@ -27,7 +27,9 @@ const Cart = ({ Data }: CartProps) => {
     if (product) {
       const itemCount = cartMap[itemId];
 
-      const priceAsNumber = parseFloat(product.price);
+      const priceAsNumber = parseFloat(
+        product.newPrice ? product.newPrice : product.price,
+      );
 
       const itemTotal = priceAsNumber * itemCount;
 
@@ -37,14 +39,14 @@ const Cart = ({ Data }: CartProps) => {
         ...product,
 
         count: itemCount,
-        total: itemTotal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' '),
+        total: itemTotal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " "),
       });
     }
   });
 
   const handleRemoveFromCart = (productId: any) => {
     const updatedCartItems = CartItems.filter(
-      (itemId: any) => itemId.id !== productId
+      (itemId: any) => itemId.id !== productId,
     );
     setCartItems(updatedCartItems);
   };
@@ -69,7 +71,7 @@ const Cart = ({ Data }: CartProps) => {
                     <div className="grid grid-cols-5 items-center">
                       <div
                         className={` ${
-                          idx % 2 === 0 ? 'bg-slate-50' : 'bg-white'
+                          idx % 2 === 0 ? "bg-slate-50" : "bg-white"
                         } col-span-3  py-2 h-full  flex items-start flex-col`}
                       >
                         <div className="flex gap-2 px-5 items-center">
@@ -84,12 +86,12 @@ const Cart = ({ Data }: CartProps) => {
                           <div className="text-start text-[18px]">
                             <p className="text-start">{product.title}</p>
                             <p className="text-main font-BriemHand">
-                              Giá:{' '}
-                              {product.price
-                                ? product.price
+                              Giá:{" "}
+                              {product.newPrice
+                                ? product.newPrice
                                     .toString()
-                                    .replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
-                                : null}
+                                    .replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+                                : product.price}
                               ₫
                             </p>
                             <p className="text-start font-light text-[16px]">
@@ -108,7 +110,7 @@ const Cart = ({ Data }: CartProps) => {
                       <div>
                         {product.total
                           .toString()
-                          .replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}
+                          .replace(/\B(?=(\d{3})+(?!\d))/g, " ")}
                         ₫
                       </div>
                     </div>
@@ -119,11 +121,11 @@ const Cart = ({ Data }: CartProps) => {
                 <div className=" "></div>
                 <div className="flex flex-col gap-2  uppercase font-bold  text-redPrimmary text-[20px] ">
                   <div>
-                    Tổng tiền hàng:{' '}
+                    Tổng tiền hàng:{" "}
                     <span className="">
                       {totalAmount
                         .toString()
-                        .replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}
+                        .replace(/\B(?=(\d{3})+(?!\d))/g, " ")}
                       ₫
                     </span>
                   </div>
@@ -136,13 +138,13 @@ const Cart = ({ Data }: CartProps) => {
           <div></div>
           <div className="flex gap-5">
             <div
-              onClick={() => HandleNavigate('/')}
+              onClick={() => HandleNavigate("/")}
               className="py-2 px-6  duration-300 cursor-pointer text-main border-main uppercase border rounded-full font-normal hover:text-orange-500 hover:border-orange-500"
             >
               Tiếp tục mua hàng
             </div>
             <div
-              onClick={() => HandleNavigate('/dat-hang')}
+              onClick={() => HandleNavigate("/dat-hang")}
               className="py-2 px-10 duration-300 cursor-pointer text-white bg-main border-main uppercase border rounded-full font-normal hover:bg-orange-500 hover:border-orange-500"
             >
               Đặt hàng

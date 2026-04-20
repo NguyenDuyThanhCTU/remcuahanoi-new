@@ -50,8 +50,9 @@ export default async function RootLayout({
           `}
         </Script>
       </head>
-      <StateProvider>
-        <body className="font-LexendDeca font-light ">
+
+      <body className="font-LexendDeca font-light ">
+        <StateProvider>
           <Header
             Config={Config}
             ProductCategory={ProductCategory}
@@ -70,8 +71,8 @@ export default async function RootLayout({
           <Hotline Config={Config} />
           <Hotline1 Config={Config} />
           <Copyright Config={Config} />
-        </body>
-      </StateProvider>
+        </StateProvider>
+      </body>
     </html>
   );
 }

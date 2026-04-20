@@ -164,6 +164,7 @@ function HomeSlide({
                 alt="banner"
                 width={1600}
                 height={1600}
+                priority={index === 0}
                 className=" w-full h-full object-contain z-10"
               />
             </div>

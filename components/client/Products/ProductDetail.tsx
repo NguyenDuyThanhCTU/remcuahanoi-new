@@ -1,11 +1,12 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { Image } from "antd";
 import Link from "next/link";
 import { CategoryProps, ProductProps } from "@assets/props";
 import { useStateProvider } from "@context/StateProvider";
 import SimilarProducts from "./ProductDetail/SimilarProduct";
 import slugify from "slugify";
+import QuotePopup from "./QuotePopup";
 
 interface ProductDetailProps {
   Data: ProductProps;
@@ -24,6 +25,7 @@ const ProductDetail = ({
 }: ProductDetailProps) => {
   const ContactData = Config?.find((item: any) => item.id === "contact");
   const { setCartItems, HandleNavigate, CartItems } = useStateProvider();
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   const HandleOrder = (type: string) => {
     if (type === "buy") {
@@ -31,10 +33,11 @@ const ProductDetail = ({
       HandleNavigate("/gio-hang");
     } else {
       setCartItems((prevItems: any) => [...prevItems, id]);
+      setIsPopupOpen(true);
     }
   };
   let GropData;
-  if (Data.group) {
+  if (Data?.group) {
     GropData = Category.find((item) => item.group === true);
   }
 
@@ -43,8 +46,8 @@ const ProductDetail = ({
       <div className="grid p:grid-cols-1 d:grid-cols-2 gap-5">
         <div className="w-full flex justify-center  flex-col">
           {/* <div className="p:h-auto d:h-[450px] w-full overflow-hidden"> */}
-          <Image
-            className="h-full w-full object-contain"
+          <img
+            className="h-full w-full object-cover"
             width={650}
             height={400}
             src={Data?.image}
@@ -235,6 +238,7 @@ const ProductDetail = ({
         Data={Products}
         Category={Category}
       />
+      <QuotePopup isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />
     </>
   );
 };

@@ -1,10 +1,6 @@
 import { find } from "@config/lib/api";
 import { Metadata } from "next";
 import React from "react";
-import { IoCalendar } from "react-icons/io5";
-import { AiOutlineUser, AiTwotoneClockCircle } from "react-icons/ai";
-
-import slugify from "slugify";
 
 import ContactCard from "@components/client/Blogs/ContactCard";
 import SimilarBlogs from "@components/client/Blogs/SimilarBlogs";
@@ -21,7 +17,7 @@ export async function generateMetadata({
   const posts = await find("Posts");
 
   const Data: PostProps = posts?.find(
-    (item: PostProps) => item.url == params.slug
+    (item: PostProps) => item.url == params.slug,
   );
   return {
     title: Data?.title ? Data?.title : "Bài viết",
@@ -42,7 +38,7 @@ const PostDetail = async ({ params }: PostsDetailProps) => {
   const CategoryData: CategoryProps[] = await find("PostCategory");
 
   const Data: PostProps = Posts?.find(
-    (item: PostProps) => item.url == params.slug
+    (item: PostProps) => item.url == params.slug,
   );
   const SimilarData = Posts?.filter((item: any) => item.level0 == Data?.level0);
 
